@@ -1,0 +1,442 @@
+<!doctype html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+  <!--
+    Copyright Facebook Inc.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+  -->
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Facebook Facelift - Are you ready for it?</title>
+	<link href="css/style.css" rel="stylesheet" media="screen"/>
+  </head>
+  <body>
+  <div id="wrapper">
+	<div id="connect">
+		<h1>Connect facebook so we can get redesigning!</h1>
+		<div id="connectbuttons">
+			<button class="login">Login</button>
+			<button class="logout">Logout</button>
+			<button id="disconnect">Disconnect</button>
+		</div>
+	</div>
+	<div id="feedbar">
+		<img src="http://davidbjerremose.com/facelift/images/icons/uparrow.png" id="liveFeedToggle"/>
+		<div id="liveFeed">
+			<h4>LIVE FEED</h4>
+			<span id="barDivide"></span>
+			<div id="notifBar">
+			</div>
+			<span id="barFade"></span>
+		</div>
+	</div>
+	<section id="content">
+		<div id="generalHead">
+			<img src="http://davidbjerremose.com/facelift/images/logo.png" id="logo" />
+			<ul id="userNav">
+				<li class="activeNav">HOME</li>
+				<li>APPS</li>
+				<li>CHAT</li>
+			</ul>
+			<ul id="generalNav">
+				<li class="logout">LOGOUT</li>
+				<li>SETTINGS</li>
+			</ul>
+		</div>
+		<div id="contentHead">
+			<div id="headScrollView">
+				<div id="userFriends">
+					<div id="friendsList">
+						<div data-id="1" class="userFriend">
+							<h5 class="profileName"></h5>
+							<div class="profilePic rounded"></div>
+						</div>
+						<div data-id="2" class="userFriend">
+							<h5 class="profileName"></h5>
+							<div class="profilePic rounded"></div>
+						</div>
+						<div data-id="3" class="userFriend">
+							<h5 class="profileName"></h5>
+							<div class="profilePic rounded"></div>
+						</div>
+						<div data-id="4" class="userFriend">
+							<h5 class="profileName"></h5>
+							<div class="profilePic rounded"></div>
+						</div>
+						<div data-id="5" class="userFriend">
+							<h5 class="profileName"></h5>
+							<div class="profilePic rounded"></div>
+						</div>
+                        <div data-id="6" class="userFriend">
+							<h5 class="profileName"></h5>
+							<div class="profilePic rounded"></div>
+						</div>
+						<div data-id="7" class="userFriend">
+							<h5 class="profileName"></h5>
+							<div class="profilePic rounded"></div>
+						</div>
+					</div>
+				</div>
+				<div id="ownProfile">
+					<div id="ownProfilePicture" class="rounded"></div>
+					<div id="postForm">HELLO!</div>
+					<div id="ownShort">
+						<span id="ownName"></span>
+						<span id="ownStatus"></span>
+						<span id="ownStatusTimestamp"></span>
+					</div>
+				</div>
+				<div id="otherProfile">
+				</div>
+			</div>
+			<div id="slideDots">
+				<div id="friends"></div>
+				<div id="own" class="activeDot"></div>
+				<div id="other"></div>
+			</div>
+		</div>
+		  <div id="contentBody" class="clearfix">
+		      	<div id="leftSidePanel">
+				    <ul id="userLists">
+				    </ul>
+			 </div>
+			 <div id="userContent">
+				    <div id="userNews">
+					   <ul id="userStream">
+					   </ul>
+				    </div>
+			 </div>
+	       	</div>
+	</section>
+	<!-- OLD DEPRECATED INITIAL TESTS! -->
+    <div id="user-info">
+		<div id="laststatus"></div>
+		<div id="imgcontainer"></div>
+	</div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script src="js/marquee.js"></script>
+
+    <div id="fb-root">
+	</div>
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script>
+	window.fbAsyncInit = function() {
+    FB.init({ 
+		appId : '227219990687409',
+		channelUrl : '//www.davidbjerremose.com/facebook/channel.html',
+		status : true,
+		cookie : true,
+		xfbml : true
+	});
+	};
+	// Load the SDK Asynchronously
+	(function(d){
+		var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+		js = d.createElement('script'); js.id = id; js.async = true;
+		js.src = "//connect.facebook.net/en_US/all.js";
+		d.getElementsByTagName('head')[0].appendChild(js);
+	}(document));
+	
+	
+	$(document).ready(function() {
+		function imageResize(size, imagesize) {
+			var size = (size[0] > size[1])?size[0]:size[1];
+			var imagesize = (imagesize[0] > size[1])?imagesize[0]:imagesize[1];
+			if (size > imageresize) {
+				return size/imagesize*100;
+			}
+		}
+		var lastNotif = 0;
+		var sessionUid = 0;
+		var sessionToken = 0;
+		function parseNews(type, data) {
+			if (type == "fb.query") {
+			} else if (type == "fb.graph") {
+			}
+		}
+		function getStream(filter) {
+			if (filter != "" && filter != "EVERYONE") {
+				console.log('Filter passed was: ' + filter);
+				var html = "";
+                $("#userStream").html('<h1 class="loading_heading">Loading news...</h1>');
+				FB.api({ method: 'fql.query', query: 'SELECT post_id, actor_id, source_id, updated_time, created_time, target_id, message, created_time, attachment, comments, likes, tagged_ids, description, type FROM stream WHERE filter_key in (SELECT filter_key FROM stream_filter WHERE uid = ' + sessionUid + ' AND name = "' + filter + '") LIMIT 10'}, function (rows) {
+					//FB.api({method: 'fql.query', query: 'SELECT name FROM user WHERE uid=' + 
+					console.log(rows);
+					var currentFeed = rows[i];
+					var name = "";
+					for(i=0;i<10;i++) {
+						name = writeName(rows[i].actor_id);
+						console.log('The message is: ' + rows[i].message + ' and the name is: ' + name);
+						html += '<li class="streamPost"><div class="streamProfilePic" style="background-image: url(\'http://graph.facebook.com/' + rows[i].actor_id + '/picture?type=small\');"></div><div class="streamPostCon"><p class="streamPoster ' + rows[i].actor_id + '"></p><p class="streamContentText">' + rows[i].message + '</p><div class="streamPostRightCol"></div></div></li>';
+						console.log(html);
+					};
+					console.log(i);
+					$("#userStream").html(html);
+				});
+			} else if (filter == "EVERYONE") {
+				console.log('Filter passed was: ' + filter);
+				var html = "";
+                $("#userStream").html('<h1 class="loading_heading">Loading news...</h1>');
+				FB.api('/me/home', function (response) {
+					//FB.api({method: 'fql.query', query: 'SELECT name FROM user WHERE uid=' +
+					console.log(response);
+					var name = "";
+					for(i=0;i<10;i++) {
+						var data = response["data"][i];
+						var from = data["from"];
+						console.log('The message is: ' + data["message"] + ' and the name is: ' + from["name"]);
+						html += '<li class="streamPost"><div class="streamProfilePic" style="background-image: url(\'http://graph.facebook.com/' + from["id"]  + '/picture?type=small\');"></div><div class="streamPostCon"><p class="streamPoster ' + from["id"] + '">' + from["name"] + '</p><p class="streamContentText">' + data["message"] + '</p><div class="streamPostRightCol"></div></div></li>';
+						console.log(html);
+					};
+					console.log(i);
+					$("#userStream").html(html);
+				});
+			};
+				
+		};
+		function writeName(id) {
+			FB.api({method: 'fql.query', query: 'SELECT name FROM user WHERE uid=' + id + ' LIMIT 1'}, function(row) {
+				console.log('[FUNCTION] writeName has outputted ' + row[0].name + '.');
+				$("." + id).html(row[0].name);
+			});
+		};
+		function getLists() {
+			FB.api('/me/friendlists?access_token=' + sessionToken, function(response) {
+				console.log('This is the sessionToken: ' + sessionToken);
+				var lists = response.data;
+				html = '<li class="activeList original"><p>EVERYONE</p></li>';
+				var length = lists.length;
+				for(i=0;i<length;i++){
+					if (lists[i].list_type == "user_created") {
+						html += '<li><p>' + lists[i].name + '</p></li>';
+					}
+				};
+				//html += '<li class="small"><p>MORE</p></li>';
+				$("#userLists").html(html);
+				$("#userLists li").bind('click', function() {
+						var filter = $(this).find('p').html();
+						$("#userLists").find('.activeList').removeClass('activeList');
+						$(this).addClass('activeList');
+						console.log(filter);
+						getStream(filter);
+					});
+			});
+		};
+		function updateBarFeed() {
+			FB.api({ method: 'fql.query', query: 'SELECT notification_id, sender_id, title_html, body_html, href, object_type FROM notification WHERE recipient_id=' + sessionUid + ' LIMIT 1'}, function(rows) {
+				var html = "";
+				var currentNotif = rows[0].notification_id;
+				if (currentNotif != lastNotif) {
+					$("#notifBar ul").hide('fast');
+                    var listRemove = [];
+                    $("#notifBar ul li").each(function() { listRemove.push($(this))});
+                    listRemove[listRemove.length - 1].remove();
+					html = '<li class="barIcon"><img src="' + parseIcon(rows[0].object_type) + '" class="barIcon"/></li><li class="barNotif">' + rows[0].title_html + '</li>';
+					$("#notifBar ul").prepend(html);
+					lastNotif = currentNotif;
+					$("#notifBar ul").show('fast');
+				} else if (currentNotif == lastNotif) {
+					lastNotif = currentNotif;
+				};
+			});
+		};
+		function getBarFeed() {
+			$("#connect").remove();
+			FB.api({ method: 'fql.query', query: 'SELECT notification_id, sender_id, title_html, body_html, href, object_type FROM notification WHERE recipient_id=' + sessionUid + ''}, function(rows){
+				var html = '<ul>';
+				$("#notifBar").empty();
+				for(i=0;i<6;i++) {
+					var icon = parseIcon(rows[i].object_type);
+					html += '<li class="barIcon"><img src="' + icon + '" class="barIcon"/></li><li class="barNotif">' + rows[i].title_html + '</li>';
+					/*console.log('Here is the NotifID: ' + rows[i].notification_id);
+					console.log('Here is the SenderID: ' + rows[i].sender_id);
+					console.log('Here is the TitleHTML: ' + rows[i].title_html);
+					console.log('Here is the BodyHTML: ' + rows[i].body_html);
+					console.log('Here is the HREF: ' + rows[i].href);*/
+				}
+				html += '</ul>';
+				lastNotif = rows[0].notification_id;
+				$("#notifBar").html(html);
+				$("#feedbar").slideToggle(400);
+			});
+		};
+		/*function getMessages() {
+			FB.api({method: 'fql.query', 'SELECT name, unread_count, total_count FROM mailbox_folder WHERE viewer_id = me()*/
+		function parseIcon(object) {
+			var icon = "";
+			var prefix = "images/icons/";
+			if (object == "stream") {
+				icon = prefix + "quotemark.png";
+			} else if (object == "photo") {
+				icon = prefix + "photo.png";
+			} else if (object == "event") {
+				icon = prefix + "calendar.png"
+			} else if (object == "poke") {
+				icon = prefix + "poke.png";
+			} else {
+				icon = prefix + object;
+			}
+			return icon;
+		};
+		function getOther(uid) {
+			var checkStatus = [];
+			FB.api({ method: 'fql.query', query: 'SELECT uid, username, name, status FROM user WHERE uid=' + uid + ' LIMIT 1'}, function(rows){
+				console.log('Query 1: ' + rows);
+				checkStatus[0] = rows[0].status;
+			});
+			FB.api({ method: 'fql.query', query: 'SELECT status_id, message FROM status WHERE uid=' + uid + ' LIMIT 1'}, function(rows){
+				console.log('Query 2: ' + rows);
+				checkStatus[1] = rows[0].message;
+			});
+			if (checkStatus[0] != "") {
+				if (checkStatus[1] != "") {
+				};
+			};
+		};
+		function parseStatus(status, length) {
+			if (status.length >= length) {
+				status = status.substring(0, length);
+				status += "...";
+			}
+			return status;
+		};
+		function updateStatus() {
+			FB.api({ method: 'fql.query', query: 'select status_id, message, time from status where uid=' + sessionUid + ' limit 1'}, function(rows){
+				var time = parseDate(rows[0].time);
+				var message = parseStatus(rows[0].message, 45);
+				$("#ownStatus").html(message);
+				$("#ownStatusTimestamp").html(time);
+			});
+		};
+		function fillFriends() {
+			FB.api({ method: 'fql.query', query: 'select uid, first_name, last_name from user where uid in (select uid2 from friend where uid1 = ' + sessionUid + ') order by rand() limit 7'}, function(rows){
+				console.log(rows);
+				$("#friendsList .userFriend").each(function(index) {
+					var name = rows[index].first_name + " " + rows[index].last_name;
+					if (name.length >= 18) {
+						name = name.substring(0, name.length - 3);
+						name += "...";
+					}
+					$(this).find('.profileName').html(name);
+					$(this).data('id', rows[index].uid);
+					$(this).find('.profilePic').css('background-image', 'url("http://graph.facebook.com/' + rows[index].uid + '/picture?type=large")'); 
+				});
+			});
+		};
+		function parseDate(timestamp){
+			var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			var dt = new Date(timestamp * 1000);
+			var year = dt.getYear();
+			var year = (year < 1000) ? year + 1900 : year;
+			var month = months[dt.getMonth()];
+			var date = dt.getDate();
+			var hours = dt.getHours();
+			var minutes = dt.getMinutes();
+			if (minutes < 10) {
+				minutes = "0" + minutes;
+			}
+			var timeHtml = "" + hours + ":" + minutes + " the " + date + "th " + month + ", " + year;
+			return timeHtml;
+		}
+		function login() {
+			FB.login(function(response) {
+				if (response.authResponse) {
+					console.log('Welcome! Fetching your information... ');
+					
+					FB.api('/me', function(response) {
+						console.log('Good to see you, ' + response.name + '.');
+						$("#ownProfilePicture").css('background-image', 'url("http://graph.facebook.com/' + response.id + '/picture?type=large")');
+						sessionUid = response.id;
+						console.log(sessionUid);
+						$("#headScrollView").animate({scrollLeft: '1480'}, 400);
+						checkStatus();
+						getBarFeed();
+						updateStatus();
+						getLists();
+						fillFriends();
+					});
+				} else {
+					console.log('User cancelled login or did not fully authorize.');
+				}
+			}, {scope: 'user_status,read_stream,create_event,manage_notifications,read_friendlists,read_insights,friends_status,read_mailbox'});
+		};
+		function logout() {
+			FB.logout(function(response) {
+				console.log('User logged out...');
+			});
+		};
+		function disconnect() {
+			FB.api({ method : 'Auth.revokeAuthorization' }, function(response) {
+				console.log('User disconnected with our app... ');
+				location.reload();
+			});
+		};
+		function checkStatus() {
+			FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					sessionUid = response.authResponse.userID;
+					sessionToken = response.authResponse.accessToken;
+				} else {
+					login();
+				}
+			});
+		};
+		function update(all, object) {
+			if (all == true) {
+				console.log('Updating all...');
+			} else if (all == false && object) {
+				if (object == "notifbar") {
+					console.log('Updating bar feed...');
+					updateBarFeed();
+				}
+			};
+		};
+		$("#userNav li").click(function() {
+			$("#userNav").find('.activeNav').removeClass('activeNav');
+			$(this).addClass('activeNav');
+		});
+		$("#slideDots div").click(function() {
+			var dotClicked = $(this).attr('id');
+			$("#slideDots").find('.activeDot').removeClass('activeDot');
+			$(this).addClass('activeDot');
+			if (dotClicked == "friends") {
+				$("#headScrollView").animate({scrollLeft: '0'}, 400);
+			} else if (dotClicked == "own") {
+				$("#headScrollView").animate({scrollLeft: '1480'}, 400);
+				updateStatus();
+			} else if (dotClicked == "other") {
+				$("#headScrollView").animate({scrollLeft: '2760'}, 400);
+			}	
+		});
+		$("#friendsList .userFriend").click(function() {
+			var friendUid = $(this).data('id');
+			getOther($(this).data('id'));
+			console.log('Data was: ' + friendUid);
+		});
+		$(".logout").click(function() {
+			logout();
+		});
+		$("#disconnect").click(function() {
+			disconnect();
+		});
+		$(".login").click(function() {
+			login();
+		});
+		setTimeout(checkStatus, 1000);
+		setInterval(function() { update(false, "notifbar"); }, 5000);
+	});
+    </script>
+  </div>
+  </body>
+</html>	

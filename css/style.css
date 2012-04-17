@@ -1,0 +1,424 @@
+* {
+	font-family: Arial, san-serif !important;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	background-color: #EEE;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+h1 {
+	font-weight: normal;
+	font-size: 36px;
+	text-align: center;
+	text-shadow: 0 -2px 0 #333;
+	color: #FFF;
+}
+h4 {
+	color: #FFF;
+	font-size: 14px;
+}
+p {
+    font-size : 12px;
+}
+button {
+	background-color: rgba(0, 0, 0, 0);
+	border: 0px solid #FFF;
+	border-left: 1px solid #FFF;
+	border-right: 1px solid #FFF;
+	font-weight: bold;
+	padding: 5px 10px;
+	color: #FFF;
+	cursor: pointer;
+	position: relative;
+}
+button:hover {
+	color: #333;
+	background-color: #FFF;
+}
+#wrapper {
+        width: 100%;
+        overflow: hidden;
+}
+#connect{
+	height: 100px;
+	width: 100%;
+	padding: 20px 0 10px 0;
+	background-color: #2b2b2b;
+	bottom: 0;
+}
+#connectbuttons {
+	width: 300px;
+	margin: 0 auto;
+	padding: 5px 0 0 0;
+}
+#feedbar {
+	bottom: 0;
+	/*overflow: hidden;*/
+	background-color: #2b2b2b;
+	height: 40px;
+	display: none;
+}
+#liveFeed {
+	height: 26px;
+	width: 10000px;
+	padding: 0 0 0 100px;
+	padding-top: 14px;
+	font-size: 12px;
+}
+#liveFeed h4 {
+	float: left;
+	margin-right: 40px;
+	text-shadow: 0 1px 0 #000;
+}
+#notifBar {
+	font-style: italic;
+	position: relative;
+	color: #BBB;
+	text-shadow: 0 1px 0 #000;
+}
+#notifBar a {
+	color: #BBB;
+	text-decoration: none;
+}
+#notifBar a:hover {
+	color: #FFF;
+}
+#notifBar a:nth-child(1) {
+	font-weight: bold;
+	text-transform:uppercase;
+	font-style: normal;
+}
+#notifBar ul li {
+	float: left;
+	margin-right: 10px;
+        display: inline;
+}
+#liveFeedToggle {
+	position: absolute;
+	top: 20px;
+	left: 70px;
+	cursor: pointer;
+	display: none;
+}
+#barDivide {
+	position: absolute;
+	top: 10px;
+	left: 210px;
+    margin-left: -20px;
+	height: 20px;
+	width: 1px;
+	background-color: #DDD;
+}
+#barFade {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 40px;
+	width: 60px;
+	background: url('http://davidbjerremose.com/facelift/images/fadeoutbar.png');
+}
+#content {
+	position: absolute;
+	width: 1280px;
+	height: 100%;
+	left: 50%;
+	margin-left: -640px;
+}
+#generalHead {
+	margin-top: 20px;
+}
+#contentHead {
+	margin-top: 50px;
+}
+#logo {
+	margin-left: -25px;
+}
+#userNav {
+	position: absolute;
+	left: 230px;
+	top: 37px;
+}
+#userNav li {
+	float: left;
+	margin-right: 20px;
+	padding: 7px 20px;
+	border-radius: 5px;
+	color: #344b83;
+	font-weight: 500;
+	text-shadow: 0 1px 0 #FFF;
+	cursor: pointer;
+}
+#userNav li.activeNav {
+	box-shadow: 0 1px 0 #999;
+	background-color: #FFF;
+}
+#userNav li:hover {
+	background-color: #DDD;
+	color: #FFF;
+}
+#generalNav {
+	position: absolute;
+	right: 0;
+	top: 37px;
+}
+#generalNav li {
+	float: right;
+	margin-left: 10px;
+	padding: 7px 10px;
+	color: #344b83;
+	font-weight: 500;
+	cursor: pointer;
+	text-shadow: 0 1px 0 #FFF;
+}
+#generalNav li:hover {
+	color: #FFF;
+}
+#ownProfilePicture {
+	width: 135px;
+	height: 135px;
+	margin: 20px 0 0 10px;
+	float: left;
+	box-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+#contentBackground {
+    width: 100%;
+    height: 1000px;
+}
+#contentBody {
+	margin-top: 30px;
+	background-color: #FFF;
+	height: auto;
+	width: 100%;
+	position: relative;
+}
+#leftSidePanel {
+	padding-top: 30px;
+	margin: 0;
+	float: left;
+	width: 210px;
+}
+#userLists {
+	font-size: 16px;
+	text-transform: uppercase;
+}
+#userLists li {
+	width: 180px;
+	height: auto;
+	color: #999;
+	margin: 12px 0 10px 10px;
+	cursor: pointer;
+	padding: 10px;
+    
+}
+#userLists li:hover {
+	color: #DDD;
+}
+#userLists li.activeList {
+	background-color: #efefef;
+	border-radius: 5px;
+	width: 170px;
+	color: #333;
+}
+#userLists li.activeList:hover {
+	background-color: #DDD;
+}
+#userLists li p {
+	text-shadow: 0 1px 0 #FFF;
+}
+#userContent {
+	width: auto;
+	float: left;
+}
+#headScrollView {
+	position: relative;
+	height: 190px;
+	overflow: hidden;
+}
+#userFriends {
+	position: absolute;
+	width: 1280px;
+	height: 220px;
+	left: 0;
+}
+#friendsList {
+	position: relative;
+	width: 1200px;
+	height: 190px;
+    margin: 0 auto;
+}
+#ownProfile {
+	position: absolute;
+	width: 1280px;
+	height: 190px;
+	left: 1480px;
+}
+#otherProfile {
+	position: absolute;
+	width: 1280px;
+	height: 180px;
+	left: 2760px;
+}
+#postForm {
+	position: relative;
+	margin-top: 30px;
+	margin-left: 170px;
+}
+#ownShort {
+	height: 180px;
+	position: relative;
+}
+#ownStatus {
+	font-size: 30px;
+	font-style: italic;
+	color: #555;
+	text-shadow: 0 1px 0 #FFF;
+	position: absolute;
+	margin-top: 75px;
+	margin-left: 30px;
+}
+#ownStatusTimestamp {
+	position: absolute;
+	color: #888;
+	font-size: 14px;
+	margin-top: 105px;
+	margin-left: 30px;
+}
+#slideDots {
+	width: 56px;
+	height: 8px;
+	position: relative;
+	margin: 0 auto;
+	top: 10px;
+}
+#slideDots div {
+	content: ' ';
+	position: relative;
+	width: 10px;
+	height: 10px;
+	margin: 4px;
+	border-radius: 4px;
+	background-color: #555;
+	float: left;
+	cursor: pointer;
+	box-shadow: 0 1px 0 #FFF;
+    display: inline;
+}
+#slideDots div:nth-child(1) {
+    float: left;
+}
+#slideDots div:nth-child(2) {
+}
+#slideDots div:nth-child(3) {
+    float: right;
+}
+#slideDots div.activeDot {
+	background-color: #EEE;
+	width: 9px;
+	height: 9px;
+	border: 1px solid #555;
+}
+#userNews {
+}
+#userStream {
+	margin-top: 42px;
+}
+#userStream li:nth-child(odd) {
+	background: #EEE;
+}
+.userFriend {
+	width: 170px;
+	position: relative;
+	float: left;
+}
+.profileName {
+	font-size: 16px;
+	color: #555;
+	text-shadow: 0 1px 0 #FFF;
+	text-align: center;
+}
+.profilePic {
+	margin: 10px auto 0 auto;
+	width: 135px;
+	height: 135px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+.streamProfilePic {
+	width: 42px;
+	height: 42px;
+	border-radius: 5px;
+    margin: 0 20px 0 0;
+	display: block;
+    position: relative;
+    float: left;
+}
+.streamPoster {
+    text-transform: uppercase;
+    color: #344B83;
+}
+.streamPost {
+	width: 1024px;
+	margin: 10px;
+	padding: 10px;
+	border-radius: 5px;
+	min-height: 50px;
+}
+.streamPostCon {
+	position: relative;
+	margin: 0 0 0 10px;
+	display: inline;
+}
+.barIcon {
+	margin-top: -2px;
+}
+.rounded {
+	border-radius: 10px;
+}
+.loading_heading {
+    
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
