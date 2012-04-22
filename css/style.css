@@ -154,7 +154,7 @@ button:hover {
 	right: 0;
 	height: 40px;
 	width: 60px;
-	background: url('images/fadeoutbar.png');
+	background: url('../images/fadeoutbar.png');
 }
 #content {
 	position: absolute;
