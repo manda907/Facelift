@@ -91,7 +91,7 @@ button:hover {
 	padding: 5px 0 0 0;
 }
 #feedbar {
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	overflow: hidden;
 	width: 100%;
