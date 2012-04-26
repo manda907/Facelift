@@ -385,9 +385,6 @@ button:hover {
 	box-shadow: 0 0 5px rgba(0,0,0,0.4);
 	overflow: hidden;
 }
-.profilePic img {
-	max-width: 100%;
-}
 .streamProfilePic {
 	width: 42px;
 	height: 42px;
