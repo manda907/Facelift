@@ -77,11 +77,7 @@
 							<h5 class="profileName"></h5>
 							<div class="profilePic rounded"></div>
 						</div>
-                        <div data-id="6" class="userFriend">
-							<h5 class="profileName"></h5>
-							<div class="profilePic rounded"></div>
-						</div>
-						<div data-id="7" class="userFriend">
+                        			<div data-id="6" class="userFriend">
 							<h5 class="profileName"></h5>
 							<div class="profilePic rounded"></div>
 						</div>
@@ -315,7 +311,7 @@
 			});
 		};
 		function fillFriends() {
-			FB.api({ method: 'fql.query', query: 'select uid, first_name, last_name from user where uid in (select uid2 from friend where uid1 = ' + sessionUid + ') order by rand() limit 5'}, function(rows){
+			FB.api({ method: 'fql.query', query: 'select uid, first_name, last_name from user where uid in (select uid2 from friend where uid1 = ' + sessionUid + ') order by rand() limit 6'}, function(rows){
 				console.log(rows);
 				$("#friendsList .userFriend").each(function(index) {
 					var name = rows[index].first_name + " " + rows[index].last_name;
