@@ -93,7 +93,7 @@ button:hover {
 #feedbar {
 	position: absolute;
 	bottom: 0;
-	/*overflow: hidden;*/
+	overflow: hidden;
 	background-color: #2b2b2b;
 	height: 40px;
 	display: none;
