@@ -322,8 +322,8 @@
 					$(this).data('id', rows[index].uid);
 					$(this).find('.profilePic').html('<img alt="profilepic" src="http://graph.facebook.com/' + rows[index].uid + '/picture?type=large" />');
 				});
+				$('.profilePic img').imagefit();
 			});
-			$('.profilePic img').imagefit();
 		};
 		function parseDate(timestamp){
 			var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
