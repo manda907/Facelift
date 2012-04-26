@@ -273,31 +273,31 @@ button:hover {
 }
 #headScrollView {
 	position: relative;
-	height: 190px;
+	height: 200px;
 	overflow: hidden;
 }
 #userFriends {
 	position: absolute;
 	width: 1280px;
-	height: 220px;
+	height: 230px;
 	left: 0;
 }
 #friendsList {
 	position: relative;
 	width: 1200px;
-	height: 190px;
-    margin: 0 auto;
+	height: 200px;
+    	margin: 0 auto;
 }
 #ownProfile {
 	position: absolute;
 	width: 1280px;
-	height: 190px;
+	height: 200px;
 	left: 1480px;
 }
 #otherProfile {
 	position: absolute;
 	width: 1280px;
-	height: 180px;
+	height: 200px;
 	left: 2760px;
 }
 #postForm {
