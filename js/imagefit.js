@@ -1,5 +1,5 @@
 (function($) {
-  $.fn.fullBg = function(){
+  $.fn.imagefit = function(){
     var bgImg = $(this);		
  
     function resizeImg() {
