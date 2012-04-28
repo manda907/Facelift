@@ -1,19 +1,5 @@
 (function($) {
 	$.fn.imagefit = function(options) {
-		function adjustRatio(img)
-		{
-			if(window.innerHeight < img.height)
-			{
-				img.style.height = '100%';
-				img.style.width = 'auto';
-			}
-			else if(window.innerWidth < img.width)
-			{
-				img.style.width = '100%';
-				img.style.height = 'auto';
-			}
-		}
-		
 		this.each(function(){
 				var container = this;
 				
@@ -24,6 +10,19 @@
 				imgs.each(function(){
 					adjustRatio(this);
 				});
+				function adjustRatio(img)
+				{
+					if(container.height() < img.height())
+					{
+						img.css('height', '100%');
+						img.css('width', 'auto');
+					}
+					else if(container.width() < img.width())
+					{
+						img.css('width', '100%');
+						img.css('height', 'auto');
+					}
+				}
 			});
 		return this;
 	};
