@@ -152,7 +152,7 @@
 		var sessionToken = 0;
 		function adjustRatio(img, container)
 		{
-		    console.log('This is the image tings to rescale: ' + img + ' and then container: ' + container)
+		    console.log('This is the image tings to rescale: ' + img.width() + ' & ' + img.height() + ' and then container: ' + container.width() + ' & ' + container.height())
 		    if(container.height() < img.height())
 		    {
 		    	console.log('Resizing by height');
