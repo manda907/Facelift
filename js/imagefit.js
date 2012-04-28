@@ -1,5 +1,14 @@
 (function($) {
 	$.fn.imagefit = function(options) {
+		var fit = {
+			one : function(img, container){
+				if ($(img).width() < container.width() {
+					$(img).width('100%').height('auto');
+				} else if ($(img).height() < container.height() {
+					$(img).height('100%').width('auto');
+				}
+		};
+		
 		this.each(function(){
 				var container = this;
 				
@@ -8,22 +17,8 @@
 				
 				// store initial dimensions on each image 
 				imgs.each(function(){
-					adjustRatio(this);
+					fit.one(this, container);
 				});
-				function adjustRatio(img)
-				{
-					var container = this;
-					if(container.height() < img.height())
-					{
-						img.css('height', '100%');
-						img.css('width', 'auto');
-					}
-					else if(container.width() < img.width())
-					{
-						img.css('width', '100%');
-						img.css('height', 'auto');
-					}
-				}
 			});
 		return this;
 	};
