@@ -1,20 +1,13 @@
-(function($) {
-	$.fn.imagefit = function(options) {
-		var $imgContainer = $(this);
-		var $newsImg = $(this + " img");
-		$imgContainer.css("width", $imgContainer.parent().width());
-		if ($newsImg.length > 0) {
-			if ($newsImg.width() < $imgContainer.width()) {
-				$imgContainer.width($newsImg.width());
-			}
-			if ($newsImg.height() < $imgContainer.height()) {
-				$imgContainer.height($newsImg.height());
-			}
-			$newsImg.imgscale({ 
-				parent : $(this), 
-				center: "true",
-				scale: "fill"
-			});
-		}
-	};
-})(jQuery);
+function adjustRatio(img)
+{
+    if(window.innerHeight < img.height)
+    {
+        img.style.height = '100%';
+        img.style.width = 'auto';
+    }
+    else if(window.innerWidth < img.width)
+    {
+        img.style.width = '100%';
+        img.style.height = 'auto';
+    }
+}
