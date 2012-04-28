@@ -14,13 +14,14 @@
 		
 		this.each(function(){
 				var container = this;
+				var con = $(this);
 				
 				// store list of contained images (excluding those in tables)
 				var imgs = $('img', container).not($("table img"));
 				
 				// store initial dimensions on each image 
 				imgs.each(function(){
-					fit.one(this, container);
+					fit.one(this, con);
 				});
 			});
 		return this;
