@@ -160,16 +160,18 @@
 			var ht = imgElem.height();
 			var wdt = imgElem.width();
 			if (ht < wdt){
-				if (wdt > maxwdt)
+				if (wdt > maxwdt) {
 					$(img).css({'height' : "auto", 'width' : maxwdt});
-				else
+				} else {
 					$(img).css({'height' : "auto", 'width' : wdt});
+				}
 			}
 			else if (ht > wdt){
-				if (ht > maxht)
+				if (ht > maxht){
 					$(img).css({'height' : maxht, 'width' : "auto"});
-				else
+				} else {
 					$(img).css({'height' : ht, 'width' : "auto"});
+				}
 			}
 		}
 		function parseNews(type, data) {
