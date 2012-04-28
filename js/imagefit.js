@@ -7,6 +7,7 @@
 				} else if ($(img).height() < container.height()) {
 					$(img).height('100%').width('auto');
 				}
+			};
 		};
 		
 		this.each(function(){
