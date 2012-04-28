@@ -152,19 +152,24 @@
 		var sessionToken = 0;
 		function adjustRatio(img, container)
 		{
-		    console.log('This is the image tings to rescale: ' + img.width() + ' & ' + img.height() + ' and then container: ' + container.width() + ' & ' + container.height())
-		    if(container.height() < img.height())
-		    {
-		    	console.log('Resizing by height');
-		        img.css('height', '100%');
-		        img.css('width', 'auto');
-		    }
-		    else if(container.width() < img.width())
-		    {
-		    	console.log('Resizing by width');
-		        img.css('width', '100%');
-		        img.css('height', 'auto');
-		    }
+		    	var divElem = container;
+			var maxht = divElem.height();
+			var maxwdt = divElem.width();
+			var imgElem = img;
+			var ht = imgElem.height();
+			var wdt = imgElem.width();
+			if (ht < wdt){
+				if (wdt > maxwdt)
+					$("#resize-image").css({'height' : "auto", 'width' : maxwdt});
+				else
+					$("#resize-image").css({'height' : "auto", 'width' : wdt});
+			}
+			else if (ht > wdt){
+				if (ht > maxht)
+					$("#resize-image").css({'height' : maxht, 'width' : "auto"});
+				else
+					$("#resize-image").css({'height' : ht, 'width' : "auto"});
+			}
 		}
 		function parseNews(type, data) {
 			if (type == "fb.query") {
