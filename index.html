@@ -150,14 +150,15 @@
 		var lastNotif = 0;
 		var sessionUid = 0;
 		var sessionToken = 0;
-		function adjustRatio(img)
+		function adjustRatio(img, container)
 		{
-		    if(window.innerHeight < img.height)
+		    console.log('This is the image tings to rescale: ' + img + ' and then container: ' + container)
+		    if(container.height < img.height)
 		    {
 		        img.style.height = '100%';
 		        img.style.width = 'auto';
 		    }
-		    else if(window.innerWidth < img.width)
+		    else if(container.width < img.width)
 		    {
 		        img.style.width = '100%';
 		        img.style.height = 'auto';
