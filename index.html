@@ -160,15 +160,15 @@
 			var wdt = imgElem.width();
 			if (ht < wdt){
 				if (wdt > maxwdt)
-					$("#resize-image").css({'height' : "auto", 'width' : maxwdt});
+					$(img).css({'height' : "auto", 'width' : maxwdt});
 				else
-					$("#resize-image").css({'height' : "auto", 'width' : wdt});
+					$(img).css({'height' : "auto", 'width' : wdt});
 			}
 			else if (ht > wdt){
 				if (ht > maxht)
-					$("#resize-image").css({'height' : maxht, 'width' : "auto"});
+					$(img).css({'height' : maxht, 'width' : "auto"});
 				else
-					$("#resize-image").css({'height' : ht, 'width' : "auto"});
+					$(img).css({'height' : ht, 'width' : "auto"});
 			}
 		}
 		function parseNews(type, data) {
