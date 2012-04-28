@@ -330,7 +330,7 @@
 				console.log(rows);
 				$("#friendsList .userFriend").each(function(index) {
 					var name = rows[index].first_name + " " + rows[index].last_name;
-					if (name.length >= 13) {
+					if (name.length >= 10) {
 						name = name.substring(0, name.length - 3);
 						name += "...";
 					}
