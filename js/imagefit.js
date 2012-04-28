@@ -12,6 +12,7 @@
 				});
 				function adjustRatio(img)
 				{
+					var container = this;
 					if(container.height() < img.height())
 					{
 						img.css('height', '100%');
