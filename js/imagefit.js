@@ -2,9 +2,9 @@
 	$.fn.imagefit = function(options) {
 		var fit = {
 			one : function(img, container){
-				if ($(img).width() < container.width() {
+				if ($(img).width() < container.width()) {
 					$(img).width('100%').height('auto');
-				} else if ($(img).height() < container.height() {
+				} else if ($(img).height() < container.height()) {
 					$(img).height('100%').width('auto');
 				}
 		};
