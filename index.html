@@ -155,11 +155,13 @@
 		    console.log('This is the image tings to rescale: ' + img + ' and then container: ' + container)
 		    if(container.height() < img.height())
 		    {
+		    	console.log('Resizing by height');
 		        img.css('height', '100%');
 		        img.css('width', 'auto');
 		    }
-		    else if(container.width < img.width)
+		    else if(container.width() < img.width())
 		    {
+		    	console.log('Resizing by width');
 		        img.css('width', '100%');
 		        img.css('height', 'auto');
 		    }
