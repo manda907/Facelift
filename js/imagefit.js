@@ -14,7 +14,7 @@
 		
 		this.each(function(){
 				var container = this;
-				var con = $(this);
+				var con = $(this[0]);
 				
 				// store list of contained images (excluding those in tables)
 				var imgs = $('img', container).not($("table img"));
