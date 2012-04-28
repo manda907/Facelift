@@ -153,15 +153,15 @@
 		function adjustRatio(img, container)
 		{
 		    console.log('This is the image tings to rescale: ' + img + ' and then container: ' + container)
-		    if(container.height < img.height)
+		    if(container.height() < img.height())
 		    {
-		        img.style.height = '100%';
-		        img.style.width = 'auto';
+		        img.css('height', '100%');
+		        img.css('width', 'auto');
 		    }
 		    else if(container.width < img.width)
 		    {
-		        img.style.width = '100%';
-		        img.style.height = 'auto';
+		        img.css('width', '100%');
+		        img.css('height', 'auto');
 		    }
 		}
 		function parseNews(type, data) {
