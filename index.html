@@ -159,14 +159,14 @@
 			var imgElem = img;
 			var ht = imgElem.height();
 			var wdt = imgElem.width();
-			if (ht > wdt){
+			if (ht < wdt){
 				if (wdt > maxwdt) {
 					$(img).css({'height' : "auto", 'width' : maxwdt});
 				} else {
 					$(img).css({'height' : "auto", 'width' : wdt});
 				}
 			}
-			else if (ht < wdt){
+			else if (ht > wdt){
 				if (ht > maxht){
 					$(img).css({'height' : maxht, 'width' : "auto"});
 				} else {
