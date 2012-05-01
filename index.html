@@ -157,8 +157,8 @@
 			var maxht = divElem.height();
 			var maxwdt = divElem.width();
 			var imgElem = img;
-			var ht = imgElem.height;
-			var wdt = imgElem.width;
+			var ht = imgElem.height();
+			var wdt = imgElem.width();
 			console.log("Div constraints are: "+maxht+" & "+maxwdt+". Image is is "+ht+" & "+wdt+".")
 			if (ht < wdt){
 				$(img).css({'height' : "auto", 'width' : maxwdt});
