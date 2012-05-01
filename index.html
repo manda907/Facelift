@@ -345,7 +345,7 @@
 					$(this).find('.profileName').html(name);
 					$(this).data('id', rows[index].uid);
 					$(this).find('.profilePic').html('<img alt="profilepic" src="http://graph.facebook.com/' + rows[index].uid + '/picture?type=large" />');
-					setTimeout(adjustRatio($(this).find('.profilePic img'), $(this).find('.profilePic')), 2000);
+					adjustRatio($(this).find('.profilePic img'), $(this).find('.profilePic'));
 				});
 			});
 		};
