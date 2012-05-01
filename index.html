@@ -160,11 +160,7 @@
 			var ht = imgElem.height();
 			var wdt = imgElem.width();
 			if (ht < wdt){
-				if (wdt > maxwdt) {
-					$(img).css({'height' : "auto", 'width' : maxwdt});
-				} else {
-					$(img).css({'height' : "auto", 'width' : wdt});
-				}
+				$(img).css({'height' : "auto", 'width' : maxwdt});
 			}
 			else if (ht > wdt){
 				if (ht > maxht){
