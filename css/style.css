@@ -309,14 +309,14 @@ button:hover {
 	border-radius: 5px;
 	box-shadow: 0 1px 0 #999;
 }
+#postForm ul:first-child {
+	border-left: none;
+}
 #postForm ul li {
 	display: inline;
 	float: left;
 	padding: 10px 15px;
 	border-left: 2px solid #FFF;
-}
-#postForm ul:first-child {
-	border-left: none;
 }
 #ownShort {
 	position: absolute;
