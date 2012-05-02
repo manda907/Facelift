@@ -307,7 +307,7 @@ button:hover {
 	float: left;
 	background-color: #FBFBFB;
 	border-radius: 5px;
-	box-shadow: 0 1px 0 #FFF;
+	box-shadow: 0 1px 0 #333;
 }
 #postForm ul li {
 	display: inline;
