@@ -167,10 +167,10 @@
 				var percentscale = 0;
 				if (ht < wdt) {
 					percentscale = wdt/ht*100;
-					$(img).css({'height' : percentscale + '%', 'width' :  'auto'});
+					$(img).css({'height' : '100%', 'width' :  'auto'});
 				} else if (wdt < ht) {
 					percentscale = ht/wdt*100;
-					$(img).css({'height' : 'auto', 'width' :  percentscale + '%'});
+					$(img).css({'height' : 'auto', 'width' :  '100%'});
 				} else if (wdt = ht) {
 					percentscale = maxht/ht*100;
 					$(img).css({'height' : percentscale + '%', 'width' :  percentscale + '%'});
