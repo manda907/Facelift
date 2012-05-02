@@ -306,9 +306,15 @@ button:hover {
 	margin: 30px 0 0 30px;
 	float: left;
 }
+#postForm ul {
+	background-color: #FFF;
+	border-radius: 5px;
+	box-shadow: 0 1px 0 #FFF;
+}
 #postForm ul li {
 	display: inline;
 	float: left;
+	padding: 10px;
 }
 #ownShort {
 	position: absolute;
