@@ -162,7 +162,7 @@
 			var imgElem = img;
 			var ht = imgElem.height();
 			var wdt = imgElem.width();
-			console.log("Div constraints are: "+maxht+" & "+maxwdt+". Image is is "+ht+" & "+wdt+".")
+			console.log("Div constraints are: "+maxht+" & "+maxwdt+". Image is "+ht+" & "+wdt+".")
 			if (ht < maxht || wdt < maxwdt) {
 				var percentscale = 0;
 				if (ht < wdt) {
@@ -176,6 +176,8 @@
 					$(img).css({'height' : percentscale + '%', 'width' :  percentscale + '%'});
 				}
 			}
+			var coords = $(img).faceDetection();
+			console.log(coords);
 		}
 		function parseNews(type, data) {
 			if (type == "fb.query") {
@@ -354,7 +356,7 @@
 						$(container).html(this);
 						$(this).fadeIn();
 						adjustRatio($(this), $(container));
-					}).attr('src', 'http://graph.facebook.com/' + rows[index].uid + '/picture?type=large')
+					}).attr('src', 'http://graph.facebook.com/' + rows[index].uid + '/picture?type=large');
 				});
 			});
 		};
