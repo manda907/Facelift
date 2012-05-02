@@ -378,6 +378,7 @@ button:hover {
 	color: #555;
 	text-shadow: 0 1px 0 #FFF;
 	text-align: center;
+	text-overflow: ellipsis;
 }
 .profilePic {
 	margin: 10px auto 0 auto;
