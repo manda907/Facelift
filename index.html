@@ -85,7 +85,11 @@
 				</div>
 				<div id="ownProfile">
 					<div id="ownProfilePicture" class="rounded"></div>
-					<div id="postForm">HELLO!</div>
+					<div id="postForm">
+						<li>Hello</li>
+						<li>Yellow</li>
+						<li>Homer Simpsom</li>
+					</div>
 					<div id="ownShort">
 						<span id="ownName"></span>
 						<span id="ownStatus"></span>
@@ -459,6 +463,7 @@
 		$(".login").click(function() {
 			login();
 		});
+		$("#postForm").tabs();
 		setTimeout(checkStatus, 1000);
 		setInterval(function() { update(false, "notifbar"); }, 5000);
 	});
