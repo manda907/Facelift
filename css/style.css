@@ -323,8 +323,8 @@ button:hover {
 	position: absolute;
 	color: #888;
 	font-size: 14px;
-	margin-top: 105px;
-	margin-left: 30px;
+	left: 230px;
+	bottom: 10px;
 }
 #slideDots {
 	width: 56px;
