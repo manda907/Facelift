@@ -347,7 +347,7 @@
 						$(this).hide();
 						$(container).html(this);
 						$(this).fadeIn();
-						adjustImageRatio($(this), $(container));
+						adjustRatio($(this), $(container));
 					}).attr('src', 'http://graph.facebook.com/' + rows[index].uid + '/picture?type=large')
 				});
 			});
