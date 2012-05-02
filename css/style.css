@@ -319,7 +319,7 @@ button:hover {
 	position: absolute;
 	left: 230px;
 	bottom: 20px;
-	width: auto;
+	width: 100%;
 }
 #ownStatusTimestamp {
 	position: absolute;
@@ -327,7 +327,7 @@ button:hover {
 	font-size: 14px;
 	left: 230px;
 	bottom: 5px;
-	width: auto;
+	width: 100%;
 }
 #slideDots {
 	width: 56px;
