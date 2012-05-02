@@ -343,10 +343,10 @@
 				console.log(rows);
 				$("#friendsList .userFriend").each(function(index) {
 					var name = rows[index].first_name + " " + rows[index].last_name;
-					if (name.length >= 16) {
+					/*if (name.length >= 16) {
 						name = name.substring(0, name.length - 3);
 						name += "...";
-					}
+					}*/
 					$(this).find('.profileName').html(name);
 					$(this).data('id', rows[index].uid);
 					var img = new Image();
