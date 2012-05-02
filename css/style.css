@@ -315,7 +315,7 @@ button:hover {
 	padding: 10px 15px;
 	border-left: 2px solid #FFF;
 }
-#postForm ul li:first {
+#postForm ul:first-child {
 	border-left: none;
 }
 #ownShort {
