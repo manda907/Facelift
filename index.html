@@ -160,28 +160,15 @@
 			var ht = imgElem.height();
 			var wdt = imgElem.width();
 			console.log("Div constraints are: "+maxht+" & "+maxwdt+". Image is is "+ht+" & "+wdt+".")
-			if (ht < wdt){
-				$(img).css({'height' : "auto", 'width' : maxwdt});
-			}
-			else if (ht > wdt){
-				if (ht > maxht){
-					$(img).css({'height' : maxht, 'width' : "auto"});
-				} else {
-					$(img).css({'height' : ht, 'width' : "auto"});
+			if (ht < maxht || wdt < maxwdt) {
+				var percentscale = 0;
+				if (ht < wdt) {
+					percentscale = wdt/ht*100;
+				} else if (wdt < ht) {
+					percentscale = ht/wdt*100;
 				}
+				$(img).css({'height' : percentscale + '%', 'width' :  percentscale + '%'});
 			}
-			if (ht < maxht && wdt < maxwdt){
-				console.log('Next step in resizing');
-				var percentagescale = 0;
-				if(ht < wdt) {
-					percentagescale = wdt/ht;
-				} else if (ht > wdt) {
-					percentagescale = ht/wdt;
-					
-				}
-				$(img).width(percentagescale + '%').height(percentagescale + '%');
-			}
-			$(img).css({'height' : '100%', 'width' : '100%'});
 		}
 		function parseNews(type, data) {
 			if (type == "fb.query") {
