@@ -294,6 +294,7 @@ button:hover {
 	width: 1280px;
 	height: 200px;
 	left: 1480px;
+	margin-top: 30px;
 }
 #otherProfile {
 	position: absolute;
