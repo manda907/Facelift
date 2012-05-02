@@ -86,12 +86,14 @@
 				<div id="ownProfile">
 					<div id="ownProfilePicture" class="rounded"></div>
 					<div id="postForm">
-						<li><a href="#statusTab">Hello</li>
-						<li><a href="#imageTab">Yellow</li>
-						<li><a href="#questionTab">Homer Simpsom</li>
-						<div id="statusTab">Amazing!</div>
-						<div id="imageTab">incredible!</div>
-						<div id="questionTab">Hi there!</div>
+						<ul>
+							<li>Status</li>
+							<li>Image</li>
+							<li>Question</li>
+						</ul>
+						<div id="statusTab"></div>
+						<div id="imageTab"></div>
+						<div id="questionTab"></div>
 					</div>
 					<div id="ownShort">
 						<span id="ownName"></span>
@@ -389,7 +391,14 @@
 					
 					FB.api('/me', function(response) {
 						console.log('Good to see you, ' + response.name + '.');
-						$("#ownProfilePicture").css('background-image', 'url("http://graph.facebook.com/' + response.id + '/picture?type=large")');
+						var container = $("#ownProfilePicture");
+						var img = new Image();
+						$(img).load(function() {
+							$(this).hide();
+							$(container).html(this);
+							$(this).fadeIn();
+							adjustRatio($(this), $(container));
+						}).attr('src', 'http://graph.facebook.com/' + response.id + '/picture?type=large');
 						sessionUid = response.id;
 						console.log(sessionUid);
 						$("#headScrollView").animate({scrollLeft: '1480'}, 400);
