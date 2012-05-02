@@ -307,7 +307,9 @@ button:hover {
 	float: left;
 }
 #ownShort {
-	position: relative;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 #ownStatus {
 	font-size: 30px;
