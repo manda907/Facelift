@@ -341,8 +341,14 @@
 					}
 					$(this).find('.profileName').html(name);
 					$(this).data('id', rows[index].uid);
-					$(this).find('.profilePic').html('<img alt="profilepic" src="http://graph.facebook.com/' + rows[index].uid + '/picture?type=large" />');
-					adjustRatio($(this).find('.profilePic img'), $(this).find('.profilePic'));
+					var img = new Image();
+					var container = $(this).find('.profilePic');
+					$(img).load(function() {
+						$(this).hide();
+						$(container).html(this);
+						$(this).fadeIn();
+						adjustImageRatio($(this), $(container));
+					}).attr('src', 'http://graph.facebook.com/' + rows[index].uid + '/picture?type=large')
 				});
 			});
 		};
