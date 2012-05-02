@@ -166,6 +166,8 @@
 					percentscale = wdt/ht*100;
 				} else if (wdt < ht) {
 					percentscale = ht/wdt*100;
+				} else if (wdt = ht) {
+					percentscale = maxht/ht*100;
 				}
 				$(img).css({'height' : percentscale + '%', 'width' :  percentscale + '%'});
 			}
