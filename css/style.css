@@ -303,6 +303,7 @@ button:hover {
 }
 #postForm {
 	position: relative;
+	margin: 30px 0 0 10px;
 	float: left;
 }
 #ownShort {
