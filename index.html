@@ -170,6 +170,16 @@
 					$(img).css({'height' : ht, 'width' : "auto"});
 				}
 			}
+			if (ht < maxht && wdt < maxwdt){
+				var percentagescale = 0;
+				if(ht < wdt) {
+					percentagescale = wdt/ht;
+				} else if (ht > wdt) {
+					percentagescale = ht/wdt;
+					
+				}
+				$(img).width(percentagescale + '%').height(percentagescale + '%');
+			}
 		}
 		function parseNews(type, data) {
 			if (type == "fb.query") {
