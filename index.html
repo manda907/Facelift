@@ -417,6 +417,7 @@
 		function logout() {
 			FB.logout(function(response) {
 				console.log('User logged out...');
+				location.reload();
 			});
 		};
 		function disconnect() {
@@ -476,7 +477,7 @@
 		$(".login").click(function() {
 			login();
 		});
-		setTimeout(checkStatus, 1000);
+		setTimeout(checkStatus, 3000);
 		setInterval(function() { update(false, "notifbar"); }, 5000);
 	});
     </script>
