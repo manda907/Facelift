@@ -313,6 +313,10 @@ button:hover {
 	display: inline;
 	float: left;
 	padding: 10px 15px;
+	border-left: 1px solid #FFF;
+}
+#postForm ul li:first {
+	border-left: none;
 }
 #ownShort {
 	position: absolute;
