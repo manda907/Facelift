@@ -436,7 +436,7 @@
 				if (response.status === 'connected') {
 					console.log('Welcome! Fetching your information... ');
 					sessionToken = response.authResponse.accessToken;
-					if (sessionUid = 0){
+					if (sessionUid == 0){
 						FB.api('/me', function(response) {
 							console.log('Good to see you, ' + response.name + '.');
 							var container = $("#ownProfilePicture");
