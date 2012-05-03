@@ -427,7 +427,9 @@
 			});
 		};
 		function checkStatus() {
+			console.log('Checking status...')
 			FB.getLoginStatus(function(response) {
+				console.log('Status is: ' + response)
 				if (response.status === 'connected') {
 					sessionUid = response.authResponse.userID;
 					sessionToken = response.authResponse.accessToken;
