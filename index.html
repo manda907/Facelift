@@ -436,24 +436,26 @@
 				if (response.status === 'connected') {
 					console.log('Welcome! Fetching your information... ');
 					sessionToken = response.authResponse.accessToken;
-					FB.api('/me', function(response) {
-						console.log('Good to see you, ' + response.name + '.');
-						var container = $("#ownProfilePicture");
-						var img = new Image();
-						$(img).load(function() {
-							$(this).hide();
-							$(container).html(this);
-							$(this).fadeIn();
-							adjustRatio($(this), $(container));
-						}).attr('src', 'http://graph.facebook.com/' + response.id + '/picture?type=large');
-						sessionUid = response.id;
-						console.log(sessionUid);
-						$("#headScrollView").animate({scrollLeft: '1480'}, 400);
-						getBarFeed();
-						updateStatus();
-						getLists();
-						fillFriends();
-					});
+					if (sessionUid = 0){
+						FB.api('/me', function(response) {
+							console.log('Good to see you, ' + response.name + '.');
+							var container = $("#ownProfilePicture");
+							var img = new Image();
+							$(img).load(function() {
+								$(this).hide();
+								$(container).html(this);
+								$(this).fadeIn();
+								adjustRatio($(this), $(container));
+							}).attr('src', 'http://graph.facebook.com/' + response.id + '/picture?type=large');
+							sessionUid = response.id;
+							console.log(sessionUid);
+							$("#headScrollView").animate({scrollLeft: '1480'}, 400);
+							getBarFeed();
+							updateStatus();
+							getLists();
+							fillFriends();
+						});
+					};
 				} else {
 				}
 			});
