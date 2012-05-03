@@ -330,9 +330,8 @@
 				console.log('Query 2: ' + rows);
 				checkStatus[1] = rows[0].message;
 			});
-			if (checkStatus[0] != "") {
-				if (checkStatus[1] != "") {
-				};
+			if (checkStatus[0] != "" && checkStatus[1] != "") {
+				console.log("Both checked!");
 			};
 		};
 		function parseStatus(status, length) {
