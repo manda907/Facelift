@@ -432,7 +432,7 @@
 				console.log('Status is: ' + response)
 				if (response.status === 'connected') {
 					console.log('Welcome! Fetching your information... ');
-					
+					sessionToken = response.authResponse.accessToken;
 					FB.api('/me', function(response) {
 						console.log('Good to see you, ' + response.name + '.');
 						var container = $("#ownProfilePicture");
@@ -446,14 +446,12 @@
 						sessionUid = response.id;
 						console.log(sessionUid);
 						$("#headScrollView").animate({scrollLeft: '1480'}, 400);
-						checkStatus();
 						getBarFeed();
 						updateStatus();
 						getLists();
 						fillFriends();
 					});
 				} else {
-					login();
 				}
 			});
 		};
