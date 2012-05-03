@@ -323,10 +323,10 @@
 		function getOther(uid) {
 			var checkStatus = [];
 			FB.api({ method: 'fql.query', query: 'SELECT uid, username, name, status FROM user WHERE uid=' + uid + ' LIMIT 1'}, function(rows){
-				console.log('Query 1: ' + rows);
+				console.log(rows);
 				checkStatus[0] = rows[0].status;
 				FB.api({ method: 'fql.query', query: 'SELECT status_id, message FROM status WHERE uid=' + uid + ' LIMIT 1'}, function(rows){
-					console.log('Query 2: ' + rows);
+					console.log(rows);
 					checkStatus[1] = rows[0].message;
 					if (checkStatus[0] != "" && checkStatus[1] != "") {
 						console.log("Both checked!");
