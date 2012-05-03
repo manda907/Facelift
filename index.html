@@ -431,8 +431,27 @@
 			FB.getLoginStatus(function(response) {
 				console.log('Status is: ' + response)
 				if (response.status === 'connected') {
-					sessionUid = response.authResponse.userID;
-					sessionToken = response.authResponse.accessToken;
+					console.log('Welcome! Fetching your information... ');
+					
+					FB.api('/me', function(response) {
+						console.log('Good to see you, ' + response.name + '.');
+						var container = $("#ownProfilePicture");
+						var img = new Image();
+						$(img).load(function() {
+							$(this).hide();
+							$(container).html(this);
+							$(this).fadeIn();
+							adjustRatio($(this), $(container));
+						}).attr('src', 'http://graph.facebook.com/' + response.id + '/picture?type=large');
+						sessionUid = response.id;
+						console.log(sessionUid);
+						$("#headScrollView").animate({scrollLeft: '1480'}, 400);
+						checkStatus();
+						getBarFeed();
+						updateStatus();
+						getLists();
+						fillFriends();
+					});
 				} else {
 					login();
 				}
