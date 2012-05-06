@@ -166,7 +166,7 @@
 		var lastNotif = 0;
 		var sessionUid = 0;
 		var sessionToken = 0;
-		function adjustRatio(img, container)
+		function adjustRatio(img, container) /* Called on function fillFriends. Suppposed to resize images to fit containers. */
 		{
 			console.log(img);
 		    	var divElem = container;
@@ -192,16 +192,16 @@
 			var coords = $(img).faceDetection();
 			console.log(coords);
 		}
-		function parseNews(type, data) {
+		function parseNews(type, data) /* Currently not in use by any function, is supposed to sort different types of news queries, but has yet to be implemented */ {
 			if (type == "fb.query") {
 			} else if (type == "fb.graph") {
 			}
 		}
-		function getStream(filter) {
+		function getStream(filter) /* The primary function for pulling and parsing information regarding the users stream. This cannot, however, be performed on other users than the authenticated unless specificly specified by the queried user. */ {
 			if (filter != "" && filter != "EVERYONE") {
 				console.log('Filter passed was: ' + filter);
 				var html = "";
-                $("#userStream").html('<h1 class="loading_heading">Loading news...</h1>');
+                		$("#userStream").html('<h1 class="loading_heading">Loading news...</h1>');
 				FB.api({ method: 'fql.query', query: 'SELECT post_id, actor_id, source_id, updated_time, created_time, target_id, message, created_time, attachment, comments, likes, tagged_ids, description, type FROM stream WHERE filter_key in (SELECT filter_key FROM stream_filter WHERE uid = ' + sessionUid + ' AND name = "' + filter + '") LIMIT 10'}, function (rows) {
 					//FB.api({method: 'fql.query', query: 'SELECT name FROM user WHERE uid=' + 
 					console.log(rows);
@@ -219,7 +219,7 @@
 			} else if (filter == "EVERYONE") {
 				console.log('Filter passed was: ' + filter);
 				var html = "";
-                $("#userStream").html('<h1 class="loading_heading">Loading news...</h1>');
+               			$("#userStream").html('<h1 class="loading_heading">Loading news...</h1>');
 				FB.api('/me/home', function (response) {
 					//FB.api({method: 'fql.query', query: 'SELECT name FROM user WHERE uid=' +
 					console.log(response);
@@ -237,13 +237,13 @@
 			};
 				
 		};
-		function writeName(id) {
+		function writeName(id) /* This function is generally used to ensure that 2 asynchrounous queries would not load before eachother. Called in function getStream*/ {
 			FB.api({method: 'fql.query', query: 'SELECT name FROM user WHERE uid=' + id + ' LIMIT 1'}, function(row) {
 				console.log('[FUNCTION] writeName has outputted ' + row[0].name + '.');
 				$("." + id).html(row[0].name);
 			});
 		};
-		function getLists() {
+		function getLists() /* This function is used to produce the news sorting lists. The current way this function works is deprecated, or atleast functionally it is. */ {
 			FB.api('/me/friendlists?access_token=' + sessionToken, function(response) {
 				console.log('This is the sessionToken: ' + sessionToken);
 				var lists = response.data;
@@ -265,15 +265,15 @@
 					});
 			});
 		};
-		function updateBarFeed() {
+		function updateBarFeed() /* This is the function that updates the bar feed. As of now, it has no fancy animations, but it definitely wouldn't hurt */ {
 			FB.api({ method: 'fql.query', query: 'SELECT notification_id, sender_id, title_html, body_html, href, object_type, icon_url, is_unread FROM notification WHERE recipient_id=' + sessionUid + ' LIMIT 1'}, function(rows) {
 				var html = "";
 				var currentNotif = rows[0].notification_id;
 				if (currentNotif != lastNotif) {
 					$("#notifBar ul").hide('fast');
-                    var listRemove = [];
-                    $("#notifBar ul li").each(function() { listRemove.push($(this))});
-                    listRemove[listRemove.length - 1].remove();
+                    			var listRemove = [];
+                    			$("#notifBar ul li").each(function() { listRemove.push($(this))});
+                    			listRemove[listRemove.length - 1].remove();
 					html = '<li class="barIcon"><img src="' + parseIcon(rows[0].object_type) + '" class="barIcon"/></li><li class="barNotif">' + rows[0].title_html + '</li>';
 					$("#notifBar ul").prepend(html);
 					lastNotif = currentNotif;
@@ -283,7 +283,7 @@
 				};
 			});
 		};
-		function getBarFeed() {
+		function getBarFeed() /* This function "creates" the feed bar. In the future, a variable should be passed to it, determining whether it should be located in the top or the bottom, but that's just fancy glitter for now. */ {
 			$("#connect").remove();
 			FB.api({ method: 'fql.query', query: 'SELECT notification_id, sender_id, title_html, body_html, href, object_type FROM notification WHERE recipient_id=' + sessionUid + ''}, function(rows){
 				var html = '<ul>';
@@ -303,9 +303,9 @@
 				$("#feedbar").slideToggle(400);
 			});
 		};
-		/*function getMessages() {
+		/*function getMessages() { 		!!- Not yet finalized function. Development of this is medium-crucial. -!!
 			FB.api({method: 'fql.query', 'SELECT name, unread_count, total_count FROM mailbox_folder WHERE viewer_id = me()*/
-		function parseIcon(object) {
+		function parseIcon(object) /* This is pretty self-explanatory, but here goes nothing: This function parses the icons for each type of notification displayed in the feed bar. Called in getBarFeed. */ {
 			var icon = "";
 			var prefix = "images/icons/";
 			if (object == "stream") {
@@ -321,7 +321,7 @@
 			}
 			return icon;
 		};
-		function getOther(uid) {
+		function getOther(uid) /* This is the function for querying and displaying other peoples profiles in the otherProfile div. */ {
 			var checkStatus = [];
 			FB.api({ method: 'fql.query', query: 'SELECT uid, username, name, status FROM user WHERE uid=' + uid + ' LIMIT 1'}, function(rows){
 				console.log(rows);
@@ -335,14 +335,14 @@
 				});
 			});
 		};
-		function parseStatus(status, length) {
+		function parseStatus(status, length) /* Self-explanatory, takes argument "status" and shortens it down to the lenght of argument "length" */ {
 			if (status.length >= length) {
 				status = status.substring(0, length);
 				status += "...";
 			}
 			return status;
 		};
-		function updateStatus() {
+		function updateStatus() /* Function to update own status. This ought to be merged into a more useful function eventually. */ {
 			FB.api({ method: 'fql.query', query: 'select status_id, message, time from status where uid=' + sessionUid + ' limit 1'}, function(rows){
 				var time = parseDate(rows[0].time);
 				var message = parseStatus(rows[0].message, 45);
@@ -350,7 +350,7 @@
 				$("#ownStatusTimestamp").html(time);
 			});
 		};
-		function fillFriends() {
+		function fillFriends() /* This fills out the 6 friend spots. */ {
 			FB.api({ method: 'fql.query', query: 'select uid, first_name, last_name from user where uid in (select uid2 from friend where uid1 = ' + sessionUid + ') order by rand() limit 6'}, function(rows){
 				console.log(rows);
 				$("#friendsList .userFriend").each(function(index) {
