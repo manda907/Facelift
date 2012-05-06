@@ -141,6 +141,7 @@
 	</div>
     <script src="http://connect.facebook.net/en_US/all.js"></script>
     <script>
+    var hasLoggedIn = false;
     var isLoaded = false;
 	window.fbAsyncInit = function() {
     FB.init({ 
@@ -409,6 +410,7 @@
 						updateStatus();
 						getLists();
 						fillFriends();
+						hasLoggedIn = true;
 					});
 				} else {
 					console.log('User cancelled login or did not fully authorize.');
@@ -428,7 +430,7 @@
 			});
 		};
 		function checkStatus() {
-			if (isLoaded == true){
+			if (isLoaded == true && hasLoggedIn == false){
 			console.log('Checking status...')
 			FB.getLoginStatus(function(response) {
 				console.log('Status is: ' + response)
@@ -453,6 +455,7 @@
 							updateStatus();
 							getLists();
 							fillFriends();
+							hasLoggedIn = true;
 						});
 					};
 				} else {
