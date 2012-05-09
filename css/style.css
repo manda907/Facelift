@@ -317,6 +317,9 @@ button:hover {
 	padding: 8px 18px;
 	border-left: 1px solid #DDD;
 }
+#postForm ul li .hover {
+	background-color: #344b83;
+}
 #ownShort {
 	position: absolute;
 	bottom: 0;
