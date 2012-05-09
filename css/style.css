@@ -315,7 +315,7 @@ button:hover {
 #postForm ul li {
 	display: inline;
 	float: left;
-	padding: 10px 15px;
+	padding: 0 5px;
 	border-left: 1px solid #DDD;
 }
 #ownShort {
