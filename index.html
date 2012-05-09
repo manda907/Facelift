@@ -480,7 +480,7 @@
 			$(this).addClass('activeNav');
 		});
 		$("#postForm ul li").click(function() {
-			$("#postForm ul").find('.selected').removeClass('selected').html('<img src="images/' + $("#postForm ul").find('.selected').attr('data') + 'icon_g.png" />');
+			$("#postForm ul").find('.selected').html('<img src="images/' + $("#postForm ul").find('.selected').attr('data') + 'icon_g.png" />').removeClass('selected');
 			$(this).addClass('selected').html('<img src="images/' + $(this).attr('data') + 'icon_b.png" />');
 		});
 		$("#slideDots div").click(function() {
