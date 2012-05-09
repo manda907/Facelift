@@ -479,6 +479,13 @@
 			$("#userNav").find('.activeNav').removeClass('activeNav');
 			$(this).addClass('activeNav');
 		});
+		$("#postForm ul li").hover(function() {
+			$(this).html('<img src="images/' + $(this).attr('data') + 'icon_w.png" />').addClass('hover');
+		}, function() {
+			if ($(this).hasClass('selected')?$(this).html('<img src="images/' + $(this).attr('data') + 'icon_b.png" />'):$(this).html('<img src="images/' + $(this).attr('data') + 'icon_g.png" />'));
+			$(this).removeClass('hover');
+		});
+		})
 		$("#postForm ul li").click(function() {
 			$("#postForm ul").find('.selected').html('<img src="images/' + $("#postForm ul").find('.selected').attr('data') + 'icon_g.png" />').removeClass('selected');
 			$(this).addClass('selected').html('<img src="images/' + $(this).attr('data') + 'icon_b.png" />');
