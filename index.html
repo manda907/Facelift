@@ -87,10 +87,10 @@
 					<div id="ownProfilePicture" class="rounded"></div>
 					<div id="postForm">
 						<ul>
-							<li class="selected"><img src="images/houseicon_g.png" /></li>
-							<li>Status</li>
-							<li>Image</li>
-							<li>Question</li>
+							<li data="home" class="selected"><img src="images/homeicon_b.png" /></li>
+							<li data="status">Status</li>
+							<li data="image">Image</li>
+							<li data="question">Question</li>
 						</ul>
 						<div id="statusTab"></div>
 						<div id="imageTab"></div>
@@ -478,6 +478,10 @@
 		$("#userNav li").click(function() {
 			$("#userNav").find('.activeNav').removeClass('activeNav');
 			$(this).addClass('activeNav');
+		});
+		$("#postForm ul li").click(function() {
+			$("#postForm ul").find('.selected').removeClass('selected').html('<img src="images/' + $("#postForm ul").find('.selected').attr('data') + 'icon_g.png" />');
+			$(this).addClass('selected').html('<img src="images/' + $(this).attr('data') + 'icon_b.png" />');
 		});
 		$("#slideDots div").click(function() {
 			var dotClicked = $(this).attr('id');
