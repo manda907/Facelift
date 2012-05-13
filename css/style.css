@@ -320,6 +320,7 @@ button:hover {
 }
 #postForm ul li.hover {
 	background-color: #ddd;
+	border-radius: 5px;
 }
 #ownShort {
 	position: absolute;
